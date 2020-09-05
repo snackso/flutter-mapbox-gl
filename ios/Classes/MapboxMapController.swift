@@ -169,7 +169,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
             var reply = [String: NSObject]()
             guard let coordinate = methodCall.arguments as? [Double] else { return nil }
             let latLng = CLLocationCoordinate2D.fromArray(coordinate)
-            let point = mapView.convert(latLng)
+            let point = mapView.convert(toPointTo: latLng)
             reply["x"] = point.x
             reply["y"] = point.y
             result(reply)

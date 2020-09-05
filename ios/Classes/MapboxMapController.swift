@@ -167,7 +167,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
             result(reply)
         case "map#toScreenLocation":
             var reply = [String: CGFloat]()
-            guard let coordinate = methodCall.arguments as! [Double]
+            let coordinate = methodCall.arguments as! [Double]
             let latLng = CLLocationCoordinate2D.fromArray(coordinate)
             let point = mapView.convert(latLng, toPointTo: nil)
             reply["x"] = point.x

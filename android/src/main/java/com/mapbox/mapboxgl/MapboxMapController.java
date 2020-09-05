@@ -441,6 +441,14 @@ final class MapboxMapController
         result.success(reply);
         break;
       }
+      case "map#toScreenLocation": {
+        PointF point = Convert.toScreenLocation(call.argument("latLng"), mapboxMap);
+        Map<String, Object> reply = new HashMap<>();
+        reply.put("x", point.x);
+        reply.put("y", point.y);
+        result.success(reply);
+        break;
+      }
       case "camera#move": {
         final CameraUpdate cameraUpdate = Convert.toCameraUpdate(call.argument("cameraUpdate"), mapboxMap, density);
         if (cameraUpdate != null) {

@@ -5,6 +5,7 @@
 package com.mapbox.mapboxgl;
 
 import android.graphics.Point;
+import android.graphics.PointF;
 
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdate;
@@ -65,6 +66,12 @@ class Convert {
 
   static boolean isScrollByCameraUpdate(Object o) {
     return toString(toList(o).get(0)).equals("scrollBy");
+  }
+  
+  static PointF toScreenLocation(Object o, MapboxMap mapboxMap){
+    final List<?> data = Convert.toList(o);
+    LatLng latLng = Convert.toLatLng(data.get(0));
+    return mapboxMap.getProjection().toScreenLocation(latLng);
   }
 
   static CameraUpdate toCameraUpdate(Object o, MapboxMap mapboxMap, float density) {

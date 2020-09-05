@@ -442,7 +442,7 @@ final class MapboxMapController
         break;
       }
       case "map#toScreenLocation": {
-        Log.d("LATLNG", call.argument("latLng"));
+//        Log.d("LATLNG", call.argument("latLng"));
         PointF point = Convert.toScreenLocation(call.argument("latLng"), mapboxMap);
         Map<String, Object> reply = new HashMap<>();
         reply.put("x", point.x);

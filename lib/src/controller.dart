@@ -610,7 +610,7 @@ class MapboxMapController extends ChangeNotifier {
     return MapboxGlPlatform.getInstance(_id).getVisibleRegion();
   }
 
-  Future<LatLngBounds> getScreenPoint(LatLng latLng) async {
+  Future<LatLngBounds> toScreenLocation(LatLng latLng) async {
     return MapboxGlPlatform.getInstance(_id).toScreenLocation(latLng);
   }
 

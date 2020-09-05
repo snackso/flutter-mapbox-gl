@@ -376,7 +376,10 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
   Future<Point<double>> toScreenLocation(LatLng latLng) async {
     try {
       final Map<Object, Object> reply =
-      await _channel.invokeMethod('map#toScreenLocation', null);
+      await _channel.invokeMethod('map#toScreenLocation',
+        <String, Object>{
+        'latLng': latLng.toJson(),
+      },);
       return Point<double>(reply["x"], reply["y"]);
     } on PlatformException catch (e) {
       return new Future.error(e);

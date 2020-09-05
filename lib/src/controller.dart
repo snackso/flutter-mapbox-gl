@@ -610,8 +610,8 @@ class MapboxMapController extends ChangeNotifier {
     return MapboxGlPlatform.getInstance(_id).getVisibleRegion();
   }
 
-  Future<LatLngBounds> getScreenPoint() async {
-    return MapboxGlPlatform.getInstance(_id).getVisibleRegion();
+  Future<LatLngBounds> getScreenPoint(LatLng latLng) async {
+    return MapboxGlPlatform.getInstance(_id).toScreenLocation(latLng);
   }
 
   /// Adds an image to the style currently displayed in the map, so that it can later be referred to by the provided name.

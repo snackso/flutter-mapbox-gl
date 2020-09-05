@@ -6,6 +6,7 @@ package com.mapbox.mapboxgl;
 
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.util.Log;
 
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdate;
@@ -69,6 +70,7 @@ class Convert {
   }
   
   static PointF toScreenLocation(Object o, MapboxMap mapboxMap){
+    Log.d("OOOO", o.toString());
     LatLng latLng = Convert.toLatLng(o);
     return mapboxMap.getProjection().toScreenLocation(latLng);
   }

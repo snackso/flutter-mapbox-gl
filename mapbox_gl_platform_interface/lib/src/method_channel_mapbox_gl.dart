@@ -371,6 +371,18 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
     }
   }
 
+
+  @override
+  Future<Point<double>> toScreenLocation(LatLng latLng) async {
+    try {
+      final Map<Object, Object> reply =
+      await _channel.invokeMethod('map#toScreenLocation', null);
+      return Point<double>(reply["x"], reply["y"]);
+    } on PlatformException catch (e) {
+      return new Future.error(e);
+    }
+  }
+
   @override
   Future<LatLngBounds> getVisibleRegion() async {
     try {

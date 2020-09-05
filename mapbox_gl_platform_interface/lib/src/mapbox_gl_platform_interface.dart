@@ -182,6 +182,10 @@ abstract class MapboxGlPlatform {
         'requestMyLocationLatLng() has not been implemented.');
   }
 
+  Future<Point<double>> toScreenLocation(LatLng latLng) async {
+    throw UnimplementedError('toScreenLocation() has not been implemented.');
+  }
+
   Future<LatLngBounds> getVisibleRegion() async {
     throw UnimplementedError('getVisibleRegion() has not been implemented.');
   }

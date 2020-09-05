@@ -70,7 +70,7 @@ class Convert {
   }
   
   static PointF toScreenLocation(Object o, MapboxMap mapboxMap){
-    Log.d("OOOO", o.toString());
+//    Log.d("OOOO", o.toString());
     LatLng latLng = Convert.toLatLng(o);
     return mapboxMap.getProjection().toScreenLocation(latLng);
   }

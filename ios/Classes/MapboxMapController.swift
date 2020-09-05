@@ -165,6 +165,14 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
             reply["sw"] = [visibleRegion.sw.latitude, visibleRegion.sw.longitude] as NSObject
             reply["ne"] = [visibleRegion.ne.latitude, visibleRegion.ne.longitude] as NSObject
             result(reply)
+        case "map#toScreenLocation":
+            var reply = [String: NSObject]()
+            guard let coordinate = methodCall.arguments as? [Double] else { return nil }
+            let latLng = CLLocationCoordinate2D.fromArray(coordinate)
+            let point = mapView.convert(latLng)
+            reply["x"] = point.x
+            reply["y"] = point.y
+            result(reply)
         case "camera#move":
             guard let arguments = methodCall.arguments as? [String: Any] else { return }
             guard let cameraUpdate = arguments["cameraUpdate"] as? [Any] else { return }
@@ -702,3 +710,4 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
         mapView.attributionButtonMargins = CGPoint(x: x, y: y)
     }
 }
+    
